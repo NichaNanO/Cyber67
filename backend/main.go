@@ -9,13 +9,19 @@ import (
 
 type AnswerRequest struct {
 	Answer string `json:"answer"`
+	Page   int    `json:"page"` // เพิ่ม field ระบุหน้าที่ส่งคำตอบมา
 }
 
 type AnswerResponse struct {
 	Correct bool `json:"correct"`
 }
 
-const correctAnswer = "IQXOAYQFAEKYYQFUO"
+// คำตอบที่ถูกต้องสำหรับแต่ละหน้า
+var correctAnswers = map[int]string{
+	1: "IQXOAYQFAEKYYQFUO",          // คำตอบสำหรับหน้าที่ 1
+	2: "044224070",  // คำตอบสำหรับหน้าที่ 2
+    3: "hackwords",
+}
 
 func checkAnswer(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -30,7 +36,10 @@ func checkAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	isCorrect := req.Answer == correctAnswer
+	// ตรวจสอบคำตอบตามหน้าที่ส่งมา
+	correctAnswer, exists := correctAnswers[req.Page]
+	isCorrect := exists && req.Answer == correctAnswer
+
 	res := AnswerResponse{Correct: isCorrect}
 
 	w.Header().Set("Content-Type", "application/json")

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PhonePage = () => {
+const NextPage = () => {
   const [input, setInput] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -13,15 +13,15 @@ const PhonePage = () => {
       const response = await fetch('http://localhost:8080/check-answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answer: input, page: 2 }), // ส่ง page 1 เพื่อระบุว่าคำตอบนี้สำหรับหน้าแรก
+        body: JSON.stringify({ answer: input, page: 3 }),
       });
 
       const result = await response.json();
       if (result.correct) {
-        setMessage('คำตอบถูกต้อง! กำลังไปหน้าถัดไป...');
+        setMessage('คำตอบถูกต้อง! 🎉');
         setTimeout(() => {
-          navigate('/next'); // เปลี่ยนไปหน้าถัดไป
-        }, 1000);
+            navigate("/"); // ใช้ navigate เปลี่ยนหน้าไปยัง "/phone"
+        }, 1000); // รอ 1 วินาที
       } else {
         setMessage('คำตอบไม่ถูกต้อง ลองใหม่อีกครั้ง!');
       }
@@ -32,9 +32,8 @@ const PhonePage = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '580px' }}>
-      <h1>🤙🧪</h1>
-      <h1>ฆ๊ธ</h1>
+    <div style={{ textAlign: 'center', marginTop: '50px',marginLeft: "580px"}}>
+      <h1>HAHJM52</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -61,4 +60,4 @@ const PhonePage = () => {
   );
 };
 
-export default PhonePage;
+export default NextPage;
