@@ -34,7 +34,7 @@ const PhonePage = () => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '580px' }}>
       <h1>🤙🧪</h1>
-      <h1>ฆ๊ธ</h1>
+      <h1>ฆีพฟืฟพำำ ๊ืรอำพหระั นด ธำแ้ืนสนเั</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -46,9 +46,35 @@ func checkAnswer(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(res)
 }
 
+//gift
+const correctAnswer_p = "11"
+
+func checkAnswer_p(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var req AnswerRequest
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	isCorrect := req.Answer == correctAnswer_p
+	res := AnswerResponse{Correct: isCorrect}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(res)
+}
+//
+
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/check-answer", checkAnswer)
+    mux.HandleFunc("/check-answer-p", checkAnswer_p)   //gift
+
 
 	// เปิดใช้งาน CORS
 	handler := cors.New(cors.Options{
