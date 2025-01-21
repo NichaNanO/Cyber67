@@ -20,7 +20,7 @@ const HashPage = () => {
       if (result.correct) {
         setMessage('คำตอบถูกต้อง! 🎉');
         setTimeout(() => {
-            navigate("/"); // ใช้ navigate เปลี่ยนหน้าไปยัง "/phone"
+            navigate("/");
         }, 1000); // รอ 1 วินาที
       } else {
         setMessage('คำตอบไม่ถูกต้อง ลองใหม่อีกครั้ง!');
@@ -32,15 +32,16 @@ const HashPage = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px',marginLeft: "580px"}}>
-      <h1>ข้อความลับนั้นคือ!!</h1>
+    <div style={{ fontFamily: '"Kanit", sans-serif', textAlign: 'center', marginTop: '20px',marginLeft: "430px"}}>
+      <h1 style={{ color: 'white', userSelect: 'text' }}>SHA</h1>
+      <h1>ข้อความลับนั้นมีเพียงหนึ่งเดียว!!</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="ใส่คำตอบ"
-          style={{ padding: '10px', fontSize: '1rem', width: '300px' }}
+          style={{ textAlign: 'center', padding: '10px', fontSize: '1rem', width: '500px' }}
         />
         <br />
         <button
