@@ -21,6 +21,8 @@ var correctAnswers = map[int]string{
 	1: "IQXOAYQFAEKYYQFUO",          // คำตอบสำหรับหน้าที่ 1
 	2: "044224070",  // คำตอบสำหรับหน้าที่ 2
     3: "hackwords",
+	4: "3247",
+	5: "",
 }
 
 func checkAnswer(w http.ResponseWriter, r *http.Request) {
