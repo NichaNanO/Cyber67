@@ -22,7 +22,7 @@ var correctAnswers = map[int]string{
 	2: "044224070",  // คำตอบสำหรับหน้าที่ 2
     3: "hackwords",
 	4: "3247",
-	5: "",
+	5: "8293d3e2ec4961cc4f94a50cf8a6d1cbdaafc448",
 }
 
 func checkAnswer(w http.ResponseWriter, r *http.Request) {
