@@ -33,7 +33,7 @@ const NextPage = () => {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px',marginLeft: "580px"}}>
-      <h1>HAHJM52</h1>
+      <h1>hegmysrks</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
